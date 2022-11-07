@@ -29,12 +29,17 @@ Parameters for request and response are compliant with [CAIP-74](https://github.
 
 **Request**
 
+Param `Expiry` is an optional Unix timestamp. Sets the time until which the responder can respond to this request. If request is expired responder should respond with a specific error code.
+
+If this parameter is not specified, the request is considered indefinite.
+
 ```jsonc
 // wc_authRequest params
 {
   "requester": {
     "publicKey": string,
     "metadata": Metadata,
+    "expiry": number // optional
   },
   "payloadParams": PayloadParams
 }
